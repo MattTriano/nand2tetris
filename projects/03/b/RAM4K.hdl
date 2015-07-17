@@ -1,3 +1,4 @@
+
 // This file is part of www.nand2tetris.org
 // and the book "The Elements of Computing Systems"
 // by Nisan and Schocken, MIT Press.
@@ -16,4 +17,16 @@ CHIP RAM4K {
 
     PARTS:
     // Put your code here:
+    DMux8Way(in=load, sel=address[9..11], a=lA, b=lB, c=lC, d=lD, e=lE, f=lF, g=lG, h=lH);
+
+    RAM512(in=in, load=lA,	address=address[0..8],	out=oA);
+    RAM512(in=in, load=lB,	address=address[0..8],	out=oB);
+    RAM512(in=in, load=lC,	address=address[0..8],	out=oC);
+    RAM512(in=in, load=lD,	address=address[0..8],	out=oD);
+    RAM512(in=in, load=lE,	address=address[0..8],	out=oE);
+    RAM512(in=in, load=lF,	address=address[0..8],	out=oF);
+    RAM512(in=in, load=lG,	address=address[0..8],	out=oG);
+    RAM512(in=in, load=lH,	address=address[0..8],	out=oH);
+
+    Mux8Way16(a=oA, b=oB, c=oC, d=oD, e=oE, f=oF, g=oG, h=oH, sel=address[9..11], out=out);
 }
